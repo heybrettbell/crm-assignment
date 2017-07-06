@@ -105,14 +105,14 @@ class Contact
   # This method should delete the contact
   # HINT: Check the Array class docs for built-in methods that might be useful here
   def delete
-    Contact.delete
+    @@contacts.delete(self)
   end
 
   # Feel free to add other methods here, if you need them.
 
 end
 
-john = Contact.create("John", "Smith", "john@gmail.com")
-kim = Contact.create("Kim", "Wright", "kim@gmail.com")
-peg = Contact.create("Peggy", "Bell", "peggy@gmail.com")
-tim = Contact.create("Tim", "Richards", "tim_richards@gmail.com")
+# john = Contact.create("John", "Smith", "john@gmail.com")
+# kim = Contact.create("Kim", "Wright", "kim@gmail.com")
+# peg = Contact.create("Peggy", "Bell", "peggy@gmail.com")
+# tim = Contact.create("Tim", "Richards", "tim_richards@gmail.com")
