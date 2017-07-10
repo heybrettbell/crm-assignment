@@ -1,3 +1,10 @@
+gem 'activerecord', '=4.2.9'
+require 'active_record'
+require 'mini_record'
+
+ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: 'crm.sqlite3')
+
+
 class Contact
 
   attr_reader   :id
@@ -112,7 +119,29 @@ class Contact
 
 end
 
-# john = Contact.create("John", "Smith", "john@gmail.com")
-# kim = Contact.create("Kim", "Wright", "kim@gmail.com")
-# peg = Contact.create("Peggy", "Bell", "peggy@gmail.com")
-# tim = Contact.create("Tim", "Richards", "tim_richards@gmail.com")
+a = Contact.create(‘Jon’, ‘Smith’, ‘js@email.com’, ‘super cliche’)
+b = Contact.create(‘Fred’, ‘Wozniak’, ‘fw@email.com’, ‘super fat’)
+c = Contact.create(‘Rumple’, ‘Stiltskin’, ‘rs@email.com’, ‘super creepy’)
+
+puts Contact.all.inspect
+puts “”
+
+puts Contact.find(1001).inspect #Jane
+puts “”
+#
+a.update(“email”, “jonsmith@email.com”)
+puts a.inspect
+puts “”
+
+puts Contact.find_by(‘email’, ‘rs@email.com’).inspect
+puts “”
+#
+c.delete
+puts Contact.all.inspect
+#
+puts “”
+puts b.full_name
+#
+puts “”
+Contact.delete_all
+puts Contact.all.inspect
