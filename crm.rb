@@ -49,7 +49,12 @@ class CRM
     print 'Enter a Note: '
     note = gets.chomp
 
-  Contact.create(first_name, last_name, email, note)
+    contact = Contact.create(
+      first_name: first_name,
+      last_name:  last_name,
+      email:      email,
+      note:       note
+    )
 
   end
 
@@ -58,14 +63,16 @@ class CRM
     contact_to_search = gets.chomp
     print "Enter the new last name: "
     updated_value = gets.chomp
-    searched_contact = Contact.find_by("last_name", contact_to_search)
-    searched_contact.update("last_name", updated_value)
+    searched_contact = Contact.find_by(
+    last_name: contact_to_search
+    )
+    searched_contact.update(last_name: updated_value)
   end
 
   def delete_contact
     print "Enter the last name of the contact to delete: "
     contact_to_delete = gets.chomp
-    Contact.find_by("last_name", contact_to_delete).delete
+    Contact.find_by(last_name: contact_to_delete).delete
   end
 
   def display_all_contacts
@@ -80,21 +87,21 @@ class CRM
     user_input = gets.to_i
     case user_input
       when 1
-        attribute = "first_name"
-        puts "Entr first name:"
+        attribute = :first_name
+        puts "Enter first name:"
         value = gets.chomp
       when 2
-      attribute = "last_name"
-      puts "Enter last name:"
-      value = gets.chomp
+        attribute = :last_name
+        puts "Enter last name:"
+        value = gets.chomp
 
       when 3
-        attribute = "email"
+        attribute = :email
         puts "Enter email address:"
         value = gets.chomp
     end
 
-    returned_contact = Contact.find_by(attribute, value)
+    returned_contact = Contact.find_by(attribute => value)
     puts returned_contact.inspect
 
   end
